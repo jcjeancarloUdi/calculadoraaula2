@@ -2,22 +2,69 @@
 //  ViewController.swift
 //  Calculator
 //
-//  Created by Rafagan Abreu on 13/11/17.
-//  Copyright © 2017 CINQ. All rights reserved.
+//  Created by Jean Ferreira on 22/11/17.
+//  Copyright © 2017  rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+   @IBOutlet weak var display: UILabel!
+    var userIsTyping: Bool = false
+    
+    var displayValue: Double {
+        get {
+            return Double(display.text!)!
+        }
+        set {
+            display.text = String(newValue)
+        }
     }
+    
+    @IBAction func touchClear(_ sender: UIButton) {
+        userIsTyping = false
+        display.text = "0"
+    }
+    
+    @IBAction func touchDigit(_ sender: UIButton) {
+        let digit = sender.currentTitle!
+        if userIsTyping {
+            let textDisplay = display.text ?? ""
+            display.text = textDisplay + digit
+        } else {
+            display.text = digit
+            userIsTyping = true
+        }
+    }
+    
+    @IBAction func performOperation(_ sender: UIButton) {
+        userIsTyping = false
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        if let mathSymbol = sender.currentTitle {
+            switch mathSymbol {
+            case "+":
+                break;
+            case "-":
+                break;
+            case "⨉":
+                break;
+            case "÷":
+                break;
+            case "=":
+                break;
+            case "±":
+                display.text = String(-displayValue)
+                break;
+            case "%":
+                break;
+            case "√":
+                display.text = String(sqrt(displayValue))
+                break;
+            default:
+                break;
+            }
+        }
     }
 
 

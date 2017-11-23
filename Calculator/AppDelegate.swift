@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Calculator
 //
-//  Created by Rafagan Abreu on 13/11/17.
-//  Copyright © 2017 CINQ. All rights reserved.
+//  Created by Jean Ferreira on 13/11/17.
+//  Copyright © 2017  rights reserved.
 //
 
 import UIKit
