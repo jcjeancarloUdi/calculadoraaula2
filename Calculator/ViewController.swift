@@ -67,6 +67,20 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func performOperation(_ sender: UIButton) {
+        if userIsTyping {
+            userIsTyping = false
+            manager.setOperand(displayValue)
+        }
+
+        if let mathSymbol = sender.currentTitle {
+            manager.performOperation(mathSymbol)
+        }
+        
+        if let result = manager.result {
+            displayValue = result
+        }
+    }
 
 }
 
